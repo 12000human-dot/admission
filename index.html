@@ -2,91 +2,99 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>글로벌사이버대학교 입학 지원 절차</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --teal: #5b9fa0;
-      --teal-light: #e8f4f4;
-      --salmon: #e8836a;
-      --salmon-light: #fdf0ec;
-      --olive: #8a9a5b;
-      --olive-light: #f2f4e8;
-      --gold: #c8a84b;
-      --gold-light: #fdf6e3;
-      --dark: #2d3748;
-      --gray: #718096;
-      --light: #f9fafb;
-      --white: #ffffff;
-      --radius: 16px;
-      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --teal:         #4e9a9b;
+      --teal-light:   #e6f4f4;
+      --teal-dark:    #3a7e7f;
+      --salmon:       #e07a5f;
+      --salmon-light: #fdeee9;
+      --olive:        #7a9a52;
+      --olive-light:  #eef4e4;
+      --gold:         #c09a3a;
+      --gold-bg:      #fffbee;
+      --dark:         #1e2a38;
+      --mid:          #4a5568;
+      --gray:         #718096;
+      --light:        #f4f7f7;
+      --white:        #ffffff;
+      --radius-lg:    18px;
+      --radius-md:    12px;
+      --radius-sm:    8px;
+      --shadow:       0 2px 16px rgba(0,0,0,0.07);
+      --shadow-md:    0 4px 24px rgba(0,0,0,0.10);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 
     body {
       font-family: 'Noto Sans KR', sans-serif;
-      background: #f0f4f4;
+      background: #eaf1f1;
       color: var(--dark);
       min-height: 100vh;
+      line-height: 1.6;
     }
 
-    /* ── Header ── */
+    /* ══ HEADER ══ */
     .header {
-      background: linear-gradient(135deg, var(--teal) 0%, #3d7f80 100%);
-      padding: 32px 20px 28px;
+      background: linear-gradient(145deg, var(--teal-dark) 0%, var(--teal) 100%);
+      padding: 36px 24px 30px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .header::before {
+    .header::before, .header::after {
       content: '';
       position: absolute;
-      top: -40px; right: -40px;
-      width: 160px; height: 160px;
-      background: rgba(255,255,255,0.07);
       border-radius: 50%;
+      background: rgba(255,255,255,0.06);
     }
-    .header::after {
-      content: '';
-      position: absolute;
-      bottom: -30px; left: -30px;
-      width: 120px; height: 120px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 50%;
+    .header::before { width: 180px; height: 180px; top: -60px; right: -40px; }
+    .header::after  { width: 120px; height: 120px; bottom: -40px; left: -30px; }
+
+    .header-school {
+      color: rgba(255,255,255,0.75);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      position: relative; z-index: 1;
     }
     .header h1 {
       color: #fff;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 900;
       letter-spacing: -0.5px;
-      line-height: 1.3;
-      position: relative;
-      z-index: 1;
+      line-height: 1.25;
+      position: relative; z-index: 1;
     }
-    .header p {
-      color: rgba(255,255,255,0.8);
-      font-size: 13px;
-      margin-top: 6px;
-      position: relative;
-      z-index: 1;
+    .header-sub {
+      color: rgba(255,255,255,0.65);
+      font-size: 12px;
+      margin-top: 8px;
+      position: relative; z-index: 1;
     }
 
-    /* ── Tab Selector ── */
+    /* ══ TAB ══ */
     .tab-wrap {
-      padding: 20px 20px 0;
+      padding: 20px 16px 4px;
     }
     .tab-row {
       display: flex;
       background: var(--white);
       border-radius: 50px;
-      padding: 4px;
-      box-shadow: var(--shadow);
+      padding: 5px;
+      box-shadow: var(--shadow-md);
+      gap: 4px;
     }
     .tab-btn {
       flex: 1;
-      padding: 12px 8px;
+      padding: 13px 8px;
       border: none;
       background: transparent;
       border-radius: 50px;
@@ -95,215 +103,308 @@
       font-weight: 700;
       color: var(--gray);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .tab-btn.active {
       background: var(--teal);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(91,159,160,0.4);
+      box-shadow: 0 3px 12px rgba(78,154,155,0.45);
     }
 
-    /* ── Content ── */
+    /* ══ CONTENT ══ */
     .content {
-      padding: 16px 20px 40px;
+      padding: 14px 16px 48px;
       display: none;
-      animation: fadeIn 0.35s ease;
     }
-    .content.active { display: block; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    .content.active {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Step Card ── */
+    /* ══ STEP CARD ══ */
     .step-card {
       background: var(--white);
-      border-radius: var(--radius);
-      margin-bottom: 16px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 12px;
       box-shadow: var(--shadow);
       overflow: hidden;
-      position: relative;
     }
 
     .step-header {
-      padding: 16px 18px 14px;
+      padding: 18px 16px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       cursor: pointer;
-      user-select: none;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
     }
-    .step-header:active { opacity: 0.85; }
+    .step-header:active { background: var(--light); }
 
     .step-num {
-      width: 36px; height: 36px;
+      width: 40px; height: 40px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 900;
+      font-size: 16px; font-weight: 900;
       flex-shrink: 0;
       color: #fff;
     }
-    .step-title-wrap { flex: 1; }
+    .step-info { flex: 1; min-width: 0; }
     .step-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       line-height: 1.3;
     }
     .step-date {
       font-size: 12px;
-      margin-top: 2px;
+      margin-top: 3px;
       font-weight: 500;
-      opacity: 0.7;
+      opacity: 0.65;
     }
-    .step-arrow {
-      font-size: 18px;
-      transition: transform 0.3s;
+    .step-chevron {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
       color: var(--gray);
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.2s;
     }
-    .step-card.open .step-arrow { transform: rotate(180deg); }
+    .step-card.open .step-chevron {
+      transform: rotate(180deg);
+    }
 
+    /* step colors */
+    .step-1 .step-num  { background: var(--teal); }
+    .step-1 .step-title { color: var(--teal-dark); }
+    .step-1 .step-date  { color: var(--teal); }
+    .step-1.open .step-chevron { background: var(--teal-light); color: var(--teal); }
+
+    .step-2 .step-num  { background: var(--salmon); }
+    .step-2 .step-title { color: #c0604a; }
+    .step-2 .step-date  { color: var(--salmon); }
+    .step-2.open .step-chevron { background: var(--salmon-light); color: var(--salmon); }
+
+    .step-3 .step-num  { background: var(--olive); }
+    .step-3 .step-title { color: #5a7a35; }
+    .step-3 .step-date  { color: var(--olive); }
+    .step-3.open .step-chevron { background: var(--olive-light); color: var(--olive); }
+
+    /* ══ BODY ══ */
     .step-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
     }
     .step-body-inner {
-      padding: 0 18px 18px;
-      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 4px 16px 20px;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* colors per step */
-    .step-1 .step-num { background: var(--teal); }
-    .step-1 .step-title { color: var(--teal); }
-    .step-1 .step-date { color: var(--teal); }
-
-    .step-2 .step-num { background: var(--salmon); }
-    .step-2 .step-title { color: var(--salmon); }
-    .step-2 .step-date { color: var(--salmon); }
-
-    .step-3 .step-num { background: var(--olive); }
-    .step-3 .step-title { color: var(--olive); }
-    .step-3 .step-date { color: var(--olive); }
-
-    /* ── Info blocks ── */
+    /* ══ INFO ROW ══ */
     .info-row {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
-      padding: 9px 0;
-      border-bottom: 1px dashed rgba(0,0,0,0.06);
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .info-row:last-child { border-bottom: none; }
-    .info-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .info-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .info-text { flex: 1; min-width: 0; }
+    .info-text small { font-size: 12px; color: var(--gray); display: block; margin-top: 2px; }
 
+    /* ══ BADGE ══ */
     .badge {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 2px 9px;
       border-radius: 20px;
       font-size: 11px;
       font-weight: 700;
-      margin-right: 4px;
+      margin-right: 5px;
       vertical-align: middle;
       white-space: nowrap;
     }
-    .badge-teal   { background: var(--teal-light); color: var(--teal); }
-    .badge-salmon { background: var(--salmon-light); color: var(--salmon); }
-    .badge-olive  { background: var(--olive-light); color: var(--olive); }
+    .badge-teal   { background: var(--teal-light);   color: var(--teal-dark); }
+    .badge-salmon { background: var(--salmon-light);  color: #b85540; }
+    .badge-olive  { background: var(--olive-light);   color: #4a7030; }
 
-    .sub-section {
+    /* ══ SUB SECTION ══ */
+    .sub-box {
       background: var(--light);
-      border-radius: 10px;
-      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      padding: 14px;
       margin: 10px 0;
-      font-size: 13px;
-      line-height: 1.7;
     }
-    .sub-section-title {
-      font-weight: 700;
+    .sub-title {
       font-size: 13px;
-      margin-bottom: 6px;
+      font-weight: 700;
+      color: var(--mid);
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .ol-list { padding-left: 4px; list-style: none; }
-    .ol-list li {
-      padding: 4px 0;
-      font-size: 13px;
-      line-height: 1.6;
+    /* ══ ORDERED LIST ══ */
+    .num-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .num-list li {
       display: flex;
-      gap: 8px;
+      gap: 10px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--mid);
     }
-    .ol-list li::before {
-      content: attr(data-n);
-      width: 18px; height: 18px;
+    .num-list li .n {
+      min-width: 22px; height: 22px;
       border-radius: 50%;
-      background: var(--teal);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 11px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 1px;
+      color: #fff;
     }
-    .step-2 .ol-list li::before { background: var(--salmon); }
-    .step-3 .ol-list li::before { background: var(--olive); }
+    .step-1 .num-list li .n { background: var(--teal); }
+    .step-2 .num-list li .n { background: var(--salmon); }
+    .step-3 .num-list li .n { background: var(--olive); }
 
+    /* ══ ADDRESS BOX ══ */
     .address-box {
-      background: linear-gradient(135deg, #fff8f0 0%, #fff3ea 100%);
-      border: 1.5px solid #f0c080;
-      border-radius: 10px;
-      padding: 12px 14px;
+      background: #fffaf3;
+      border: 1.5px solid #e8c97a;
+      border-radius: var(--radius-md);
+      padding: 13px 14px;
       margin-top: 10px;
       font-size: 13px;
       line-height: 1.7;
     }
-    .address-box strong {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 13px;
-      color: #b8792a;
-      margin-bottom: 4px;
+    .address-box .addr-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #a07820;
+      margin-bottom: 5px;
+      display: flex; align-items: center; gap: 5px;
     }
 
+    /* ══ NOTICE BOX ══ */
     .notice-box {
-      background: linear-gradient(135deg, var(--teal-light) 0%, #d4ecec 100%);
-      border-left: 3px solid var(--teal);
-      border-radius: 0 8px 8px 0;
-      padding: 10px 12px;
-      margin: 8px 0;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 10px 13px;
+      margin: 7px 0;
       font-size: 13px;
       line-height: 1.6;
+      color: var(--mid);
     }
-    .step-2 .notice-box {
-      background: var(--salmon-light);
-      border-left-color: var(--salmon);
-    }
-    .step-3 .notice-box {
-      background: var(--olive-light);
-      border-left-color: var(--olive);
+    .step-1 .notice-box { background: var(--teal-light);   border-left: 3px solid var(--teal); }
+    .step-2 .notice-box { background: var(--salmon-light); border-left: 3px solid var(--salmon); }
+    .step-3 .notice-box { background: var(--olive-light);  border-left: 3px solid var(--olive); }
+
+    /* ══ ALERT ══ */
+    .alert-box {
+      background: #fff8e6;
+      border: 1.5px solid #f0c84a;
+      border-radius: var(--radius-sm);
+      padding: 10px 13px;
+      margin: 10px 0 4px;
+      font-size: 13px;
+      line-height: 1.55;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
     }
 
-    .highlight-tag {
+    /* ══ LINK BUTTONS ══ */
+    .btn-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 50px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px;
       font-weight: 700;
-      color: var(--salmon);
+      text-decoration: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      transition: opacity 0.15s, transform 0.15s;
+      letter-spacing: -0.2px;
+    }
+    .link-btn:active { opacity: 0.82; transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(78,154,155,0.35);
+    }
+    .step-2 .btn-primary { background: var(--salmon); box-shadow: 0 3px 12px rgba(224,122,95,0.35); }
+    .step-3 .btn-primary { background: var(--olive);  box-shadow: 0 3px 12px rgba(122,154,82,0.35); }
+
+    .btn-gold {
+      background: var(--gold-bg);
+      color: var(--gold);
+      border: 2px solid var(--gold);
     }
 
-    /* ── Schedule Card ── */
-    .schedule-card {
-      background: linear-gradient(135deg, #2d3748 0%, #1a2535 100%);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 6px 24px rgba(45,55,72,0.25);
+    .btn-icon { font-size: 15px; }
+    .btn-arrow { margin-left: auto; opacity: 0.7; font-size: 13px; }
+
+    /* ══ PHONE ══ */
+    .phone-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--gray);
     }
-    .schedule-card h3 {
-      color: var(--gold);
-      font-size: 16px;
+    .phone-row a {
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ══ CONNECTOR ══ */
+    .connector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 28px;
+      color: var(--teal);
+      opacity: 0.35;
+      font-size: 20px;
+      margin: -2px 0;
+    }
+
+    /* ══ SCHEDULE CARD ══ */
+    .schedule-card {
+      background: linear-gradient(145deg, #1e2d3d 0%, #2a3f54 100%);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-top: 4px;
+      box-shadow: 0 6px 28px rgba(30,45,61,0.22);
+    }
+    .schedule-title {
+      color: #f0c060;
+      font-size: 15px;
       font-weight: 700;
       margin-bottom: 14px;
       display: flex;
@@ -314,160 +415,143 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    .schedule-item:last-child { border-bottom: none; }
-    .schedule-label {
-      color: rgba(255,255,255,0.7);
+    .schedule-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .s-label {
+      color: rgba(255,255,255,0.6);
       font-size: 13px;
     }
-    .schedule-value {
+    .s-value {
       color: #fff;
       font-size: 13px;
       font-weight: 600;
       text-align: right;
     }
-
-    /* ── Connector arrow ── */
-    .step-connector {
-      display: flex;
-      justify-content: center;
-      margin: -4px 0;
-      color: var(--teal);
-      font-size: 22px;
-      opacity: 0.4;
-    }
-
-    /* ── Alert Banner ── */
-    .alert-banner {
-      background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-      border: 1.5px solid #f0c040;
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin-bottom: 12px;
-      font-size: 13px;
-      line-height: 1.6;
-      display: flex;
-      gap: 8px;
-    }
-
-    /* ── Phone ── */
-    .phone-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      margin-top: 8px;
-      color: var(--gray);
-    }
-    .phone-row a {
-      color: var(--teal);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 4px;
-      padding: 5px 12px;
-      background: var(--teal);
-      color: #fff !important;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .link-btn::after { content: ' ↗'; font-size: 11px; }
-    .link-btn:active { opacity: 0.8; }
-    .step-2 .link-btn { background: var(--salmon); }
-    .link-btn-gold { background: var(--gold) !important; color: #fff !important; }
   </style>
 </head>
 <body>
 
-<!-- Header -->
+<!-- HEADER -->
 <div class="header">
-  <h1>🎓 글로벌사이버대학교<br>입학 지원 절차</h1>
-  <p>2026학년도 2학기 입학 안내</p>
+  <div class="header-school">글로벌사이버대학교</div>
+  <h1>입학 지원 절차</h1>
+  <div class="header-sub">2026학년도 2학기 입학 안내</div>
 </div>
 
-<!-- Tab -->
+<!-- TAB -->
 <div class="tab-wrap">
   <div class="tab-row">
     <button class="tab-btn active" onclick="switchTab('new')">🆕 신입생</button>
-    <button class="tab-btn" onclick="switchTab('transfer')">🔄 편입생</button>
+    <button class="tab-btn"        onclick="switchTab('transfer')">🔄 편입생</button>
   </div>
 </div>
 
-<!-- ════════════ 신입생 ════════════ -->
+<!-- ══════════ 신입생 ══════════ -->
 <div id="tab-new" class="content active">
 
   <!-- STEP 1 -->
   <div class="step-card step-1" onclick="toggleStep(this)">
     <div class="step-header">
       <div class="step-num">1</div>
-      <div class="step-title-wrap">
+      <div class="step-info">
         <div class="step-title">지원서 작성</div>
         <div class="step-date">📅 6월 1일 ~ 7월 8일</div>
       </div>
-      <div class="step-arrow">▾</div>
+      <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
       <div class="step-body-inner">
-        <div class="alert-banner">⚠️ <span><strong>7/8(화)까지</strong> 수정 가능합니다.</span></div>
-        <div class="info-row"><span class="info-icon">🌐</span><span>글로벌사이버대학교 입학홈페이지 접속<br><a href="https://go.global.ac.kr" target="_blank" rel="noopener" class="link-btn">go.global.ac.kr</a></span></div>
-        <div class="info-row"><span class="info-icon">📝</span><span>지원서 접수하기 <span class="badge badge-teal">전형료 3만원</span></span></div>
-        <div class="info-row"><span class="info-icon">📋</span><span>학업계획서 작성<br><small style="color:var(--gray)">자기소개 / 지원동기 / 학업계획 각 300자 이상</small></span></div>
-        <div class="info-row"><span class="info-icon">✏️</span><span>학업적성검사<br><small style="color:var(--gray)">60분 이내 25문항, 1회에 한해 응시 가능</small></span></div>
+        <div class="alert-box">⚠️ <span><strong>7월 8일(화)까지</strong> 수정 가능합니다.</span></div>
+        <div class="info-row">
+          <span class="info-icon">🌐</span>
+          <div class="info-text">
+            글로벌사이버대학교 입학홈페이지 접속
+            <div class="btn-row">
+              <a href="https://go.global.ac.kr" target="_blank" rel="noopener" class="link-btn btn-primary" onclick="event.stopPropagation()">
+                <span class="btn-icon">🏫</span> go.global.ac.kr 바로가기 <span class="btn-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📝</span>
+          <div class="info-text">지원서 접수하기 <span class="badge badge-teal">전형료 3만원</span></div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📋</span>
+          <div class="info-text">학업계획서 작성
+            <small>자기소개 / 지원동기 / 학업계획 각 300자 이상</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">✏️</span>
+          <div class="info-text">학업적성검사
+            <small>60분 이내 25문항 · 1회에 한해 응시 가능</small>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="step-connector">↓</div>
+  <div class="connector">↓</div>
 
   <!-- STEP 2 -->
   <div class="step-card step-2" onclick="toggleStep(this)">
     <div class="step-header">
       <div class="step-num">2</div>
-      <div class="step-title-wrap">
+      <div class="step-info">
         <div class="step-title">서류 제출</div>
         <div class="step-date">📅 6월 1일 ~ 7월 9일</div>
       </div>
-      <div class="step-arrow">▾</div>
+      <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
       <div class="step-body-inner">
-        <div class="info-row"><span class="info-icon">📦</span><span>온라인제출 or 등기우편 발송 or 방문 제출</span></div>
-        <div class="info-row"><span class="info-icon">📷</span><span><span class="badge badge-salmon">공통</span> 반명함판 사진 1매 <small style="color:var(--gray)">(지원서에 업로드 가능)</small></span></div>
-        <div class="info-row"><span class="info-icon">🏫</span><span><span class="badge badge-salmon">신입</span> 고등학교 졸업증명서</span></div>
+        <div class="info-row">
+          <span class="info-icon">📦</span>
+          <div class="info-text">온라인제출 · 등기우편 발송 · 방문 제출</div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📷</span>
+          <div class="info-text"><span class="badge badge-salmon">공통</span> 반명함판 사진 1매
+            <small>지원서에 업로드 가능</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">🏫</span>
+          <div class="info-text"><span class="badge badge-salmon">신입</span> 고등학교 졸업증명서</div>
+        </div>
 
-        <div class="sub-section">
-          <div class="sub-section-title">🖥️ 온라인제출 (정부24 온라인발급)</div>
-          <ul class="ol-list">
-            <li data-n="①">정부24 <a href="https://www.gov.kr" target="_blank" rel="noopener" class="link-btn">www.gov.kr</a> 접속</li>
-            <li data-n="②">검색창 「졸업」키워드 검색 → 회원 or 비회원 선택</li>
-            <li data-n="③">수령방법 — 온라인발급(제3자제출)</li>
-            <li data-n="④">수신인 정보<br>
-              <span style="color:var(--dark); margin-top:4px; display:block; padding-left:4px; line-height:1.8;">
-                아이디: <strong>gcu1234</strong><br>
-                성명: <strong>한문화학원</strong><br>
-                연락처: <strong>041-415-6130</strong>
-              </span>
-            </li>
+        <div class="sub-box">
+          <div class="sub-title">🖥️ 온라인제출 (정부24 온라인발급)</div>
+          <ul class="num-list">
+            <li><span class="n">①</span><span>정부24 접속
+              <div class="btn-row" style="margin-top:8px;">
+                <a href="https://www.gov.kr" target="_blank" rel="noopener" class="link-btn btn-primary" onclick="event.stopPropagation()">
+                  <span class="btn-icon">🏛️</span> www.gov.kr 바로가기 <span class="btn-arrow">↗</span>
+                </a>
+              </div>
+            </span></li>
+            <li><span class="n">②</span><span>검색창 「졸업」키워드 검색 → 회원 또는 비회원 선택</span></li>
+            <li><span class="n">③</span><span>수령방법 — 온라인발급(제3자제출)</span></li>
+            <li><span class="n">④</span><span>
+              수신인 정보<br>
+              <strong>아이디:</strong> gcu1234<br>
+              <strong>성명:</strong> 한문화학원<br>
+              <strong>연락처:</strong> 041-415-6130
+            </span></li>
           </ul>
         </div>
 
-        <div class="sub-section">
-          <div class="sub-section-title">📮 등기우편 발송</div>
-          <p style="font-size:13px; line-height:1.6; color:var(--gray)">가까운 초·중·고 행정실이나 행정복지센터 방문하여 발급 후 등기 발송</p>
+        <div class="sub-box">
+          <div class="sub-title">📮 등기우편 발송</div>
+          <p style="font-size:13.5px; color:var(--mid); line-height:1.6;">가까운 초·중·고 행정실이나 행정복지센터 방문하여 발급 후 등기 발송</p>
         </div>
 
         <div class="address-box">
-          <strong>📮 등기우편 발송 주소</strong>
+          <div class="addr-title">📮 등기우편 발송 주소</div>
           우) 31228 충남 천안시 동남구 목천읍 교천지산길 284-88<br>
           <strong>글로벌사이버대학교 입학관리팀</strong>
         </div>
@@ -475,125 +559,155 @@
     </div>
   </div>
 
-  <div class="step-connector">↓</div>
+  <div class="connector">↓</div>
 
   <!-- STEP 3 -->
   <div class="step-card step-3" onclick="toggleStep(this)">
     <div class="step-header">
       <div class="step-num">3</div>
-      <div class="step-title-wrap">
+      <div class="step-info">
         <div class="step-title">국가장학금 신청</div>
         <div class="step-date">📅 5월 22일 ~ 6월 22일</div>
       </div>
-      <div class="step-arrow">▾</div>
+      <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
       <div class="step-body-inner">
-        <div class="info-row"><span class="info-icon">🔑</span><span>신청 준비: 공동인증서 or 금융인증서 or 간편인증 <small style="color:var(--gray)">(카카오톡, 네이버 등)</small></span></div>
-        <div class="info-row"><span class="info-icon">👤</span><span>최초 이용 시 <strong>"서비스 이용자 등록"</strong> 필요</span></div>
+        <div class="info-row">
+          <span class="info-icon">🔑</span>
+          <div class="info-text">신청 준비
+            <small>공동인증서 · 금융인증서 · 간편인증 (카카오톡, 네이버 등)</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">👤</span>
+          <div class="info-text">최초 이용 시 <strong>"서비스 이용자 등록"</strong> 필요</div>
+        </div>
 
-        <div class="sub-section">
-          <ul class="ol-list">
-            <li data-n="①">신청기간: 2026. 5. 22.(금) 9시 ~ 2026. 6. 22.(월) 18시</li>
-            <li data-n="②">서류제출/가구원동의: 2026. 5. 22.(금) 9시 ~ 2026. 6. 29.(월) 18시</li>
-            <li data-n="③">신청대상: 2026-2학기 입학예정자</li>
-            <li data-n="④">신청방법: 한국장학재단 홈페이지 &gt; 장학금 &gt; 소득연계형 국가장학금 &gt; 국가장학금 Ⅰ유형(학생직접지원형) &gt; 국가장학금 통합 신청하기<br>
-              <a href="https://www.kosaf.go.kr/ko/main.do" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px;">kosaf.go.kr 바로가기</a>
-              <a href="https://12000human-dot.github.io/2026kosaf/" target="_blank" rel="noopener" class="link-btn link-btn-gold" style="margin-top:8px;">🎓 국가장학금 신청하기</a>
-            </li>
+        <div class="sub-box">
+          <ul class="num-list">
+            <li><span class="n">①</span><span>신청기간<br>2026. 5. 22.(금) 9시 ~ 2026. 6. 22.(월) 18시</span></li>
+            <li><span class="n">②</span><span>서류제출/가구원동의<br>2026. 5. 22.(금) 9시 ~ 2026. 6. 29.(월) 18시</span></li>
+            <li><span class="n">③</span><span>신청대상: 2026-2학기 입학예정자</span></li>
+            <li><span class="n">④</span><span>신청방법<br>한국장학재단 홈페이지 → 장학금 → 소득연계형 국가장학금 → 국가장학금 Ⅰ유형(학생직접지원형) → 국가장학금 통합 신청하기</span></li>
           </ul>
         </div>
 
-        <div class="notice-box">
-          ※ <strong>한적구분</strong>을 정확하게 선택하세요.<br>
-          <span class="badge badge-olive">신입</span> 학부 신입 → <strong>1학년 입학예정자</strong>
-        </div>
+        <div class="notice-box">※ <strong>한적구분</strong> 정확히 선택<br><span class="badge badge-olive">신입</span> 학부 신입 → <strong>1학년 입학예정자</strong></div>
         <div class="notice-box">※ <strong>학번</strong>: 수험번호 입력</div>
-        <div class="notice-box">※ 장학금을 받기 위해서는 <span class="highlight-tag">매학기 신청</span>하여야 함</div>
+        <div class="notice-box">※ 장학금은 <strong>매학기 신청</strong>해야 받을 수 있습니다</div>
+
+        <div class="btn-row" style="margin-top:14px;">
+          <a href="https://12000human-dot.github.io/2026kosaf/" target="_blank" rel="noopener" class="link-btn btn-primary" onclick="event.stopPropagation()">
+            <span class="btn-icon">🎓</span> 국가장학금 신청 및 안내 <span class="btn-arrow">↗</span>
+          </a>
+        </div>
 
         <div class="phone-row">📞 한국장학재단 <a href="tel:1599-2000">1599-2000</a></div>
       </div>
     </div>
   </div>
 
-  <!-- Schedule -->
+  <!-- SCHEDULE -->
   <div class="schedule-card">
-    <h3>⭐ 주요 일정</h3>
-    <div class="schedule-item">
-      <span class="schedule-label">합격자 발표</span>
-      <span class="schedule-value">7.15 (수) 10시</span>
-    </div>
-    <div class="schedule-item">
-      <span class="schedule-label">등록금 납부</span>
-      <span class="schedule-value">7.15 (수) 10시 ~ 7.17 (금)</span>
-    </div>
-    <div class="schedule-item">
-      <span class="schedule-label">수강 신청</span>
-      <span class="schedule-value">7.21 (화) ~ 7.28 (화)</span>
-    </div>
-    <div class="schedule-item">
-      <span class="schedule-label">개강일</span>
-      <span class="schedule-value">8.28 (금)</span>
-    </div>
+    <div class="schedule-title">⭐ 주요 일정</div>
+    <div class="schedule-item"><span class="s-label">합격자 발표</span><span class="s-value">7.15 (수) 10시</span></div>
+    <div class="schedule-item"><span class="s-label">등록금 납부</span><span class="s-value">7.15 (수) ~ 7.17 (금)</span></div>
+    <div class="schedule-item"><span class="s-label">수강 신청</span><span class="s-value">7.21 (화) ~ 7.28 (화)</span></div>
+    <div class="schedule-item"><span class="s-label">개강일</span><span class="s-value">8.28 (금)</span></div>
   </div>
 
 </div><!-- /tab-new -->
 
 
-<!-- ════════════ 편입생 ════════════ -->
+<!-- ══════════ 편입생 ══════════ -->
 <div id="tab-transfer" class="content">
 
   <!-- STEP 1 -->
   <div class="step-card step-1" onclick="toggleStep(this)">
     <div class="step-header">
       <div class="step-num">1</div>
-      <div class="step-title-wrap">
+      <div class="step-info">
         <div class="step-title">지원서 작성</div>
         <div class="step-date">📅 6월 1일 ~ 7월 8일</div>
       </div>
-      <div class="step-arrow">▾</div>
+      <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
       <div class="step-body-inner">
-        <div class="alert-banner">⚠️ <span><strong>7/8(화)까지</strong> 수정 가능합니다.</span></div>
-        <div class="info-row"><span class="info-icon">🌐</span><span>글로벌사이버대학교 입학홈페이지 접속<br><a href="https://go.global.ac.kr" target="_blank" rel="noopener" class="link-btn">go.global.ac.kr</a></span></div>
-        <div class="info-row"><span class="info-icon">📝</span><span>지원서 접수하기 <span class="badge badge-teal">전형료 3만원</span></span></div>
-        <div class="info-row"><span class="info-icon">📋</span><span>학업계획서 작성<br><small style="color:var(--gray)">자기소개 / 지원동기 / 학업계획 각 300자 이상</small></span></div>
-        <div class="info-row"><span class="info-icon">✏️</span><span>학업적성검사<br><small style="color:var(--gray)">60분 이내 25문항, 1회에 한해 응시 가능</small></span></div>
+        <div class="alert-box">⚠️ <span><strong>7월 8일(화)까지</strong> 수정 가능합니다.</span></div>
+        <div class="info-row">
+          <span class="info-icon">🌐</span>
+          <div class="info-text">
+            글로벌사이버대학교 입학홈페이지 접속
+            <div class="btn-row">
+              <a href="https://go.global.ac.kr" target="_blank" rel="noopener" class="link-btn btn-primary" onclick="event.stopPropagation()">
+                <span class="btn-icon">🏫</span> go.global.ac.kr 바로가기 <span class="btn-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📝</span>
+          <div class="info-text">지원서 접수하기 <span class="badge badge-teal">전형료 3만원</span></div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📋</span>
+          <div class="info-text">학업계획서 작성
+            <small>자기소개 / 지원동기 / 학업계획 각 300자 이상</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">✏️</span>
+          <div class="info-text">학업적성검사
+            <small>60분 이내 25문항 · 1회에 한해 응시 가능</small>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="step-connector">↓</div>
+  <div class="connector">↓</div>
 
   <!-- STEP 2 -->
   <div class="step-card step-2" onclick="toggleStep(this)">
     <div class="step-header">
       <div class="step-num">2</div>
-      <div class="step-title-wrap">
+      <div class="step-info">
         <div class="step-title">서류 제출</div>
         <div class="step-date">📅 6월 1일 ~ 7월 9일</div>
       </div>
-      <div class="step-arrow">▾</div>
+      <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
       <div class="step-body-inner">
-        <div class="info-row"><span class="info-icon">📦</span><span>온라인제출 or 등기우편 발송 or 방문 제출</span></div>
-        <div class="info-row"><span class="info-icon">📷</span><span><span class="badge badge-salmon">공통</span> 반명함판 사진 1매 <small style="color:var(--gray)">(지원서에 업로드 가능)</small></span></div>
-        <div class="info-row"><span class="info-icon">🏛️</span><span><span class="badge badge-salmon">편입</span> 대학교 졸업증명서, 대학교 성적증명서</span></div>
-
-        <div class="sub-section">
-          <div class="sub-section-title">🖥️ 온라인제출</div>
-          <p style="font-size:13px; line-height:1.6; color:var(--gray)">입학홈페이지 지원현황의 STEP04에서 <strong style="color:var(--salmon)">"온라인즉시제출하기"</strong> 클릭</p>
+        <div class="info-row">
+          <span class="info-icon">📦</span>
+          <div class="info-text">온라인제출 · 등기우편 발송 · 방문 제출</div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📷</span>
+          <div class="info-text"><span class="badge badge-salmon">공통</span> 반명함판 사진 1매
+            <small>지원서에 업로드 가능</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">🏛️</span>
+          <div class="info-text"><span class="badge badge-salmon">편입</span> 대학교 졸업증명서 · 대학교 성적증명서</div>
         </div>
 
-        <div class="sub-section">
-          <div class="sub-section-title">📮 등기우편 발송</div>
-          <p style="font-size:13px; line-height:1.6; color:var(--gray)">해당 대학 홈페이지의 인터넷증명 발급 메뉴 통해 발급 후 등기 발송</p>
+        <div class="sub-box">
+          <div class="sub-title">🖥️ 온라인제출</div>
+          <p style="font-size:13.5px; color:var(--mid); line-height:1.6;">입학홈페이지 지원현황의 STEP04에서 <strong style="color:var(--salmon)">"온라인즉시제출하기"</strong> 클릭</p>
+        </div>
+
+        <div class="sub-box">
+          <div class="sub-title">📮 등기우편 발송</div>
+          <p style="font-size:13.5px; color:var(--mid); line-height:1.6;">해당 대학 홈페이지의 인터넷증명 발급 메뉴 통해 발급 후 등기 발송</p>
         </div>
 
         <div class="address-box">
-          <strong>📮 등기우편 발송 주소</strong>
+          <div class="addr-title">📮 등기우편 발송 주소</div>
           우) 31228 충남 천안시 동남구 목천읍 교천지산길 284-88<br>
           <strong>글로벌사이버대학교 입학관리팀</strong>
         </div>
@@ -601,88 +715,78 @@
     </div>
   </div>
 
-  <div class="step-connector">↓</div>
+  <div class="connector">↓</div>
 
   <!-- STEP 3 -->
   <div class="step-card step-3" onclick="toggleStep(this)">
     <div class="step-header">
       <div class="step-num">3</div>
-      <div class="step-title-wrap">
+      <div class="step-info">
         <div class="step-title">국가장학금 신청</div>
         <div class="step-date">📅 5월 22일 ~ 6월 22일</div>
       </div>
-      <div class="step-arrow">▾</div>
+      <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
       <div class="step-body-inner">
-        <div class="info-row"><span class="info-icon">🔑</span><span>신청 준비: 공동인증서 or 금융인증서 or 간편인증 <small style="color:var(--gray)">(카카오톡, 네이버 등)</small></span></div>
-        <div class="info-row"><span class="info-icon">👤</span><span>최초 이용 시 <strong>"서비스 이용자 등록"</strong> 필요</span></div>
+        <div class="info-row">
+          <span class="info-icon">🔑</span>
+          <div class="info-text">신청 준비
+            <small>공동인증서 · 금융인증서 · 간편인증 (카카오톡, 네이버 등)</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">👤</span>
+          <div class="info-text">최초 이용 시 <strong>"서비스 이용자 등록"</strong> 필요</div>
+        </div>
 
-        <div class="sub-section">
-          <ul class="ol-list">
-            <li data-n="①">신청기간: 2026. 5. 22.(금) 9시 ~ 2026. 6. 22.(월) 18시</li>
-            <li data-n="②">서류제출/가구원동의: 2026. 5. 22.(금) 9시 ~ 2026. 6. 29.(월) 18시</li>
-            <li data-n="③">신청대상: 2026-2학기 입학예정자</li>
-            <li data-n="④">신청방법: 한국장학재단 홈페이지 &gt; 장학금 &gt; 소득연계형 국가장학금 &gt; 국가장학금 Ⅰ유형(학생직접지원형) &gt; 국가장학금 통합 신청하기<br>
-              <a href="https://www.kosaf.go.kr/ko/main.do" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px;">kosaf.go.kr 바로가기</a>
-              <a href="https://12000human-dot.github.io/2026kosaf/" target="_blank" rel="noopener" class="link-btn link-btn-gold" style="margin-top:8px;">🎓 국가장학금 신청하기</a>
-            </li>
+        <div class="sub-box">
+          <ul class="num-list">
+            <li><span class="n">①</span><span>신청기간<br>2026. 5. 22.(금) 9시 ~ 2026. 6. 22.(월) 18시</span></li>
+            <li><span class="n">②</span><span>서류제출/가구원동의<br>2026. 5. 22.(금) 9시 ~ 2026. 6. 29.(월) 18시</span></li>
+            <li><span class="n">③</span><span>신청대상: 2026-2학기 입학예정자</span></li>
+            <li><span class="n">④</span><span>신청방법<br>한국장학재단 홈페이지 → 장학금 → 소득연계형 국가장학금 → 국가장학금 Ⅰ유형(학생직접지원형) → 국가장학금 통합 신청하기</span></li>
           </ul>
         </div>
 
-        <div class="notice-box">
-          ※ <strong>한적구분</strong>을 정확하게 선택하세요.<br>
-          <span class="badge badge-olive">편입</span> 학부 편입 → <strong>2학년 또는 3학년 입학예정자</strong>
-        </div>
+        <div class="notice-box">※ <strong>한적구분</strong> 정확히 선택<br><span class="badge badge-olive">편입</span> 학부 편입 → <strong>2학년 또는 3학년 입학예정자</strong></div>
         <div class="notice-box">※ <strong>학번</strong>: 수험번호 입력</div>
-        <div class="notice-box">※ 장학금을 받기 위해서는 <span class="highlight-tag">매학기 신청</span>하여야 함</div>
+        <div class="notice-box">※ 장학금은 <strong>매학기 신청</strong>해야 받을 수 있습니다</div>
+
+        <div class="btn-row" style="margin-top:14px;">
+          <a href="https://12000human-dot.github.io/2026kosaf/" target="_blank" rel="noopener" class="link-btn btn-primary" onclick="event.stopPropagation()">
+            <span class="btn-icon">🎓</span> 국가장학금 신청 및 안내 <span class="btn-arrow">↗</span>
+          </a>
+        </div>
 
         <div class="phone-row">📞 한국장학재단 <a href="tel:1599-2000">1599-2000</a></div>
       </div>
     </div>
   </div>
 
-  <!-- Schedule -->
+  <!-- SCHEDULE -->
   <div class="schedule-card">
-    <h3>⭐ 주요 일정</h3>
-    <div class="schedule-item">
-      <span class="schedule-label">합격자 발표</span>
-      <span class="schedule-value">7.15 (수) 10시</span>
-    </div>
-    <div class="schedule-item">
-      <span class="schedule-label">등록금 납부</span>
-      <span class="schedule-value">7.15 (수) 10시 ~ 7.17 (금)</span>
-    </div>
-    <div class="schedule-item">
-      <span class="schedule-label">수강 신청</span>
-      <span class="schedule-value">7.21 (화) ~ 7.28 (화)</span>
-    </div>
-    <div class="schedule-item">
-      <span class="schedule-label">개강일</span>
-      <span class="schedule-value">8.28 (금)</span>
-    </div>
+    <div class="schedule-title">⭐ 주요 일정</div>
+    <div class="schedule-item"><span class="s-label">합격자 발표</span><span class="s-value">7.15 (수) 10시</span></div>
+    <div class="schedule-item"><span class="s-label">등록금 납부</span><span class="s-value">7.15 (수) ~ 7.17 (금)</span></div>
+    <div class="schedule-item"><span class="s-label">수강 신청</span><span class="s-value">7.21 (화) ~ 7.28 (화)</span></div>
+    <div class="schedule-item"><span class="s-label">개강일</span><span class="s-value">8.28 (금)</span></div>
   </div>
 
 </div><!-- /tab-transfer -->
 
 <script>
   function switchTab(type) {
-    document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
       b.classList.toggle('active', (type === 'new' && i === 0) || (type === 'transfer' && i === 1));
     });
     document.getElementById('tab-new').classList.toggle('active', type === 'new');
     document.getElementById('tab-transfer').classList.toggle('active', type === 'transfer');
   }
 
-  // Stop link clicks from bubbling to the card toggle
-  document.querySelectorAll('.link-btn').forEach(a => {
-    a.addEventListener('click', e => e.stopPropagation());
-  });
-
   function toggleStep(card) {
     const body = card.querySelector('.step-body');
     const isOpen = card.classList.contains('open');
-    // close all in same tab
     card.closest('.content').querySelectorAll('.step-card').forEach(c => {
       c.classList.remove('open');
       c.querySelector('.step-body').style.maxHeight = '0';
